@@ -2,6 +2,11 @@ package com.java.io.kotlinapp
 
 import android.content.Context
 import android.util.Log
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserFactory
+import java.io.File
+import java.io.FileInputStream
+import java.io.IOException
 
 /**
  * Created by huguojin on 2017/11/8.
@@ -9,12 +14,50 @@ import android.util.Log
 class KtParser {
     val TAG: String = "Vo7ice"
 
-    var mXmlPullParser = null
     var mInputStream = null
     var mXmlPullParserFactory = null
+    lateinit var file:File
 
     fun parse(context: Context): Unit {
         Log.d(TAG, "start parse")
+        var categorys: List<Category>? = null
+        var categoryName: String? = null
+        var category: Category? = null
+        var module: Module? = null
+        var moduleName: String? = null
+        var function: Function? = null
+        var funtionName: String? = null
+        var set: Set? = null
+        var setName: String? = null
+        var item: Item? = null
+        var itemName: String? = null
+        var itemValue: String? = null
+
+
+        try {
+            val mXmlPullParser = XmlPullParserFactory.newInstance().newPullParser()
+            file = File("/sdcard/settings.xml")
+            Log.d(TAG, "isExists:${file.exists()}")
+            val mInputStream = FileInputStream(file)
+            mXmlPullParser.setInput(mInputStream, null)
+            var eventType = mXmlPullParser.eventType
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                when(eventType) {
+                    XmlPullParser.START_DOCUMENT -> {
+                        categorys = ArrayList()
+                    }
+                    XmlPullParser.START_TAG -> {
+                    }
+                    XmlPullParser.END_TAG -> {
+                    }
+                }
+                eventType = mXmlPullParser.next()
+            }
+
+        } catch (e: IOException) {
+
+        }
+
 
     }
 

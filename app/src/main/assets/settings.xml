@@ -1,0 +1,62 @@
+<customization_form>
+    <category name="ACC">
+        <module name="Settings">
+            <function name="supported-Language-list">
+                <set
+                    name="Language-order"
+                    type="string-array">
+                    <item>en</item>
+                    <item>zh-Hans</item>
+                    <item>zh-Hant</item>
+                    <item>cs</item>
+                    <item>da</item>
+                </set>
+            </function>
+
+            <function name="supported_locales">
+                <set
+                    name="en"
+                    type="string-array">
+                    <item>en-US</item>
+                    <item>en-GB</item>
+                </set>
+                <set
+                    name="zh-Hans"
+                    type="string-array">
+                    <item>zh-Hans-CN</item>
+                </set>
+                <set
+                    name="zh-Hant"
+                    type="string-array">
+                    <item>zh-Hant-TW</item>
+                    <item>zh-Hant-HK</item>
+                </set>
+                <set
+                    name="cs"
+                    type="string-array">
+                    <item>cs-CZ</item>
+                </set>
+                <set
+                    name="da"
+                    type="string-array">
+                    <item>da-DK</item>
+                </set>
+            </function>
+        </module>
+    </category>
+
+    <category name="application">
+        <module name="Launcher">
+            <function name="scene_list">
+                <set
+                    name="plenty"
+                    max="1">
+                    <item name="scenename">HTC</item>
+                    <item name="pages_count">3</item>
+                    <item name="home_index">1</item>
+                    <item name="feed_index">0</item>
+                </set>
+            </function>
+        </module>
+    </category>
+</customization_form>

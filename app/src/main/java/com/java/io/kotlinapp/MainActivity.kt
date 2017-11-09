@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    var mContext: Context? = null
+    private var mContext: Context? = null
     var mFileName = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadAssert(): Unit {
         Thread(Runnable {run { Parser().parse(this) } } ).run()
-
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

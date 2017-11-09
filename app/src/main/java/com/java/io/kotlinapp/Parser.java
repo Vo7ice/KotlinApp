@@ -27,19 +27,21 @@ public class Parser {
 
     public void parse(Context context) {
         Log.d(TAG, "start parse");
-        List<Category> categoryList = null;
 
+        List<Category> categoryList = null;
         Category category = null;
-        String categoryName;
+        String categoryName = "";
         Module module = null;
-        String moduleName;
+        String moduleName = "";
         Function function = null;
-        String functionName;
+        String functionName = "";
         Set set = null;
-        String setName;
+        String setName = "";
         Item item = null;
         String value;
         String itemName;
+
+        List<Item> itemList = new ArrayList<>();
         try {
             mXmlPullParserFactory = XmlPullParserFactory.newInstance();
             mXmlPullParser = mXmlPullParserFactory.newPullParser();
@@ -89,7 +91,12 @@ public class Parser {
                             Log.d(TAG, "itemValue:" + value);
                             item.value = value;
                             item.name = itemName;
+                            item.setName = setName;
+                            item.functionName = functionName;
+                            item.moduleName = moduleName;
+                            item.categoryName = categoryName;
                             set.mItemList.add(item);
+                            itemList.add(item);
                             item = null;
                         }
 
@@ -142,7 +149,7 @@ public class Parser {
         public String toString() {
             StringBuilder sb = new StringBuilder();
             sb.append("[Category name:" + name + "]");
-            mModuleList.forEach(category -> sb.append(category.toString()));
+            mModuleList.forEach(module -> sb.append(module.toString()));
             return sb.toString();
         }
     }
@@ -150,6 +157,7 @@ public class Parser {
     class Module {
         String name;
         List<Function> mFunctionList = new ArrayList<>();
+        String categoryName;
 
         @Override
         public String toString() {
@@ -163,6 +171,7 @@ public class Parser {
     class Function {
         String name;
         List<Set> mSetList = new ArrayList<>();
+        String moduleName;
 
         @Override
         public String toString() {
@@ -171,11 +180,13 @@ public class Parser {
             mSetList.forEach(set -> sb.append(set.toString()));
             return sb.toString();
         }
+
     }
 
     class Set {
         String name;
         List<Item> mItemList = new ArrayList<>();
+        String functionName;
 
         @Override
         public String toString() {
@@ -189,10 +200,19 @@ public class Parser {
     class Item {
         String value;
         String name;
+        String setName;
+        String functionName;
+        String moduleName;
+        String categoryName;
 
         @Override
         public String toString() {
             return "[value:" + value + ",name:" + name + "]";
         }
+
+        public void saveToDb() {
+
+        }
+
     }
 }
