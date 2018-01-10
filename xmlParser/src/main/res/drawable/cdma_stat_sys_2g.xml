@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- //++[Customization][amt_masd_mj_chang][2017/06/27][SystemUI]Customization ChinaOC Data Icon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="15dp"
+    android:height="15dp"
+    android:viewportWidth="15"
+    android:viewportHeight="15">
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M12,7.5l0,2.2H9.7V5.2h3.8V4.6c0-0.6-0.5-0.8-1.2-0.8H9.4c-0.7,0-1.2,0.5-1.2,1.1v5.3c0,0.6,0.5,1.1,1.2,1.1
+h2.9c0.7,0,1.2-0.5,1.2-1.1l0-2.6H12z
+M5.2,3.8h-3v1.5h3v1.5H3.7c-0.8,0-1.5,0.7-1.5,1.5v3h4.5V9.8h-3V8.2h1.5
+c0.8,0,1.5-0.7,1.5-1.5V5.2C6.7,4.4,6,3.8,5.2,3.8z" />
+</vector>
+<!-- [Customization][amt_masd_mj_chang][2017/06/27][SystemUI]Customization ChinaOC Data Icon -->

@@ -42,6 +42,12 @@ public class Parser {
         String itemName;
 
         List<Item> itemList = new ArrayList<>();
+
+        State mState;
+
+        mState = State.IN;
+        int ordinal = mState.ordinal();
+
         try {
             mXmlPullParserFactory = XmlPullParserFactory.newInstance();
             mXmlPullParser = mXmlPullParserFactory.newPullParser();
@@ -141,6 +147,12 @@ public class Parser {
         }
     }
 
+    public void test(Context context, String pkgName) throws ClassNotFoundException {
+
+        ClassLoader loader = context.getClassLoader();
+        Class<?> clazz = Class.forName(pkgName, true, loader);
+    }
+
     class Category {
         String name;
         List<Module> mModuleList = new ArrayList<>();
@@ -214,5 +226,9 @@ public class Parser {
 
         }
 
+    }
+
+    public enum State {
+        DIS, CONNECT, IN, OUT, INANDOUT
     }
 }

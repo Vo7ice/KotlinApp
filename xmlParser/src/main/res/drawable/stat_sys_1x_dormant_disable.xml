@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- //++[Customization][amt_masd_mj_chang][2017/06/26][SystemUI]Verizon Data Icon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="15dp"
+    android:height="15dp"
+    android:viewportWidth="15"
+    android:viewportHeight="15">
+
+    <path
+        android:name="stat_x5F_sys_x5F_1x_x5F_dormant_x5F_disable"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.35"
+        android:fillType="evenOdd"
+        android:strokeAlpha="0.35"
+        android:strokeWidth="1"
+        android:pathData="M10.8,8.7L6.1,4.1h1.5l1.2,1.7L10,4.1h1.6L9.6,7L10.8,8.7z
+M13.1,12.9l-0.9,0.9L7.9,9.5L7.6,9.9H6L7,8.5L5,6.6v2.8c0,0.2-0.2,0.4-0.4,0.4H4.1c-0.2,0-0.4-0.2-0.4-0.4V5.7H2.9V4.7
+c0,0,0.1,0,0.2,0L0.5,2.1l0.9-0.9L13.1,12.9z" />
+</vector>
+<!-- [Customization][amt_masd_mj_chang][2017/06/26][SystemUI]Verizon Data Icon -->

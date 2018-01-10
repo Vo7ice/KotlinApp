@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadAssert(): Unit {
-        Thread(Runnable {run { Parser().parse(this) } } ).run()
+        Thread(Runnable { Parser().parse(this) }).start()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

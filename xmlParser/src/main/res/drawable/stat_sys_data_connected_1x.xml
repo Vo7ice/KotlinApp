@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- //++[Customization][amt_masd_mj_chang][2017/06/26][SystemUI]Verizon Data Icon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="15dp"
+    android:height="15dp"
+    android:viewportWidth="15"
+    android:viewportHeight="15">
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:strokeWidth="1"
+        android:pathData="M 2.2 1.2
+        L 2.2 2.5
+        L 3.7 2.5
+        L 3.7 8
+        L 5.2 8
+        L 5.2 1.2 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M 11.3 8
+        L 9.9 5.786
+        L 8.5 8
+        L 7 8
+        L 9.15 4.6
+        L 7 1.2
+        L 8.5 1.2
+        L 9.9 3.414
+        L 11.3 1.2
+        L 12.8 1.2
+        L 10.65 4.6
+        L 12.8 8 Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.35"
+        android:strokeAlpha="0.35"
+        android:strokeWidth="1"
+        android:pathData="M2.1,11.3h1.3v2.9h2.1v-2.9h1.3L4.5,8.9L2.1,11.3z
+M11.6,12.6V9.7H9.5v2.9H8.2l2.3,2.3l2.3-2.3H11.6z" />
+
+</vector>
+<!-- [Customization][amt_masd_mj_chang][2017/06/26][SystemUI]Verizon Data Icon -->

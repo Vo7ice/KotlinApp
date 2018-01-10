@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KotlinApp.iml" filepath="$PROJECT_DIR$/KotlinApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/news/news.iml" filepath="$PROJECT_DIR$/news/news.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xmlParser/app.iml" filepath="$PROJECT_DIR$/xmlParser/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xmlParser/xmlParser.iml" filepath="$PROJECT_DIR$/xmlParser/xmlParser.iml" />
     </modules>
   </component>
 </project>
