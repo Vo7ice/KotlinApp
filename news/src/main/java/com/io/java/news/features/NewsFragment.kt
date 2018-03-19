@@ -1,4 +1,4 @@
-package com.io.java.news.fatures
+package com.io.java.news.features
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +16,10 @@ class NewsFragment : BaseFragment() {
 
     companion object {
         private val KEY_REDDIT_NEWS = "redditNews"
+    }
+
+    private val newsManager by lazy {
+        NewsManager.create()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
