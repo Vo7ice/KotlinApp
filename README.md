@@ -13,3 +13,5 @@
 - `open` 关键字:代表着可以被继承
 - [扩展函数](http://blog.csdn.net/jhj_24/article/details/54290644)
 - [Kotlin基础](http://blog.csdn.net/to_yan/article/details/51881818)
+- [ Kotlin中问号(?)和两个叹号(!!)](https://blog.csdn.net/android_gjw/article/details/78436707)
+- [Kotlin全局函数的引入和范围](https://blog.csdn.net/zhuhai__yizhi/article/details/78182828)

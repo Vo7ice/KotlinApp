@@ -1,5 +1,6 @@
 package com.io.java.news.base
 
+import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,4 +10,8 @@ import android.view.ViewGroup
  */
 fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
+}
+
+fun showNackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(view, message, duration).show()
 }
