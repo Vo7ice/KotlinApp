@@ -13,34 +13,38 @@ import com.io.java.news.common.ViewTypeDelegateAdapter
  */
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val item: List<ViewType> = ArrayList()
-    private val delegateAdapter = SparseArrayCompat<ViewTypeDelegateAdapter>()
+    private val items = ArrayList<ViewType>()
+    private val delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
 
     private val mLoadingItem = object : ViewType {
         override fun getViewType() = Constant.LOADING
     }
 
     init {
-
+        delegateAdapters.put(Constant.LOADING, LoadingDelegateAdapter())
+        delegateAdapters.put(Constant.NEWS, NewsDelegateAdapter())
+        items.add(mLoadingItem)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
-    }
+    override fun getItemViewType(position: Int): Int = items[position].getViewType()
 
-    override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        delegateAdapters.get(getItemViewType(position)).onBindViewHolder(holder, items[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return delegateAdapters.get(viewType).onCreateViewHolder(parent)
     }
 
     fun addNews(news: List<RedditNewsItem>) {
+        val beforSize = items.size -1
+        items.removeAt(beforSize)
+        notifyItemRemoved(beforSize)
 
+        items.addAll(news)
+        items.add(mLoadingItem)
+        notifyItemRangeChanged(beforSize, items.size +1)
     }
 }

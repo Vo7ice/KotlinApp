@@ -11,12 +11,12 @@ import com.io.java.news.common.ViewTypeDelegateAdapter
  * Created by huguojin on 2018/3/27.
  */
 class NewsDelegateAdapter : ViewTypeDelegateAdapter {
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, item: ViewType) {
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = TurnsViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup?): RecyclerView.ViewHolder = TurnsViewHolder(parent)
 
-    class TurnsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.content_container)) {
+    class TurnsViewHolder(parent: ViewGroup?) : RecyclerView.ViewHolder(parent?.inflate(R.layout.news_item)) {
 
     }
 }

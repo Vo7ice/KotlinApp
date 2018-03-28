@@ -21,7 +21,7 @@
             android:id="@+id/img_thumb"
             android:layout_width="50dp"
             android:layout_height="50dp"
-
+            android:layout_margin="5dp"
             android:src="@drawable/ic_account_circle_black_24dp"
             android:tint="@color/colorPrimary"/>
 
@@ -29,33 +29,52 @@
             android:id="@+id/txt_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img_thumb"
             android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/img_thumb"
             tools:text="This should be a long description like this example that I'm showing."/>
 
-        <TextView
-            android:id="@+id/txt_author"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/txt_description"
+            android:layout_marginTop="3dp"
             android:layout_toEndOf="@id/img_thumb"
-            android:layout_marginStart="5dp"
-            tools:text="Author 123"/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txt_comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img_thumb"
-            android:layout_marginStart="5dp"
-            tools:text="30012 comments"/>
+            <TextView
+                android:id="@+id/txt_author"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:drawablePadding="3dp"
+                android:drawableStart="@drawable/ic_author_black_24dp"
+                android:gravity="center"
+                tools:text="Author 123"/>
 
-        <TextView
-            android:id="@+id/txt_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img_thumb"
-            android:layout_marginStart="5dp"
-            tools:text="12 hours ago"/>
+            <TextView
+                android:id="@+id/txt_comments"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:drawablePadding="3dp"
+                android:drawableStart="@drawable/ic_insert_comment_black_24dp"
+                android:gravity="center"
+                tools:text="30012 comments"/>
+
+            <TextView
+                android:id="@+id/txt_time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:drawablePadding="3dp"
+                android:drawableStart="@drawable/ic_timer_black_24dp"
+                android:gravity="center"
+                tools:text="12 hours ago"/>
+        </LinearLayout>
+
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
