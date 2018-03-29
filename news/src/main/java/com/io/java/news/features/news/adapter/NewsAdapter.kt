@@ -39,12 +39,31 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun addNews(news: List<RedditNewsItem>) {
-        val beforSize = items.size -1
+        val beforSize = items.size - 1
         items.removeAt(beforSize)
         notifyItemRemoved(beforSize)
 
         items.addAll(news)
         items.add(mLoadingItem)
-        notifyItemRangeChanged(beforSize, items.size +1)
+        notifyItemRangeChanged(beforSize, items.size + 1)
     }
+
+    fun getNews(): List<RedditNewsItem> {
+        return items.filter {
+            it.getViewType() == Constant.NEWS
+        }.map {
+            it as RedditNewsItem
+        }
+    }
+
+    fun clearAndAddNews(news: List<RedditNewsItem>) {
+        items.clear()
+        notifyItemRangeRemoved(0, getLastPosition())
+
+        items.addAll(news)
+        items.add(mLoadingItem)
+        notifyItemRangeInserted(0, items.size)
+    }
+
+    private fun getLastPosition(): Int = if (items.lastIndex == -1) 0 else items.lastIndex
 }
