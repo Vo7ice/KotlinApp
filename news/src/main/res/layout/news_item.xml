@@ -17,12 +17,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
 
-        <android.support.v4.widget.CircleImageView
+        <ImageView
             android:id="@+id/img_thumb"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
-            tools:src="@drawable/ic_account_circle_black_24dp"/>
+            tools:src="@drawable/ic_account_circle_black_24dp"
+            android:contentDescription="@string/img_thumbnail"/>
 
         <TextView
             android:id="@+id/txt_description"
