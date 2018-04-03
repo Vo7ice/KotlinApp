@@ -15,3 +15,7 @@
 - [Kotlin基础](http://blog.csdn.net/to_yan/article/details/51881818)
 - [ Kotlin中问号(?)和两个叹号(!!)](https://blog.csdn.net/android_gjw/article/details/78436707)
 - [Kotlin全局函数的引入和范围](https://blog.csdn.net/zhuhai__yizhi/article/details/78182828)
+
+## Android
+- [博客评论时间显示算法](https://blog.csdn.net/liuyinghui523/article/details/51480858)
+- [Android中的string资源占位符及Plurals string](https://blog.csdn.net/Gaugamela/article/details/54694982)

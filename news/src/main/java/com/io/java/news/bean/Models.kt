@@ -2,6 +2,7 @@ package com.io.java.news.bean
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.io.java.news.common.Constant
 import com.io.java.news.common.ViewType
 
 /**
@@ -41,14 +42,12 @@ data class RedditNewsItem(
         val author: String,
         val title: String,
         val numComments: Int,
-        val created: Long,
+        val created_utc: Long,
         val thumbnail: String,
         val url: String?
 ) : ViewType, Parcelable {
 
-    override fun getViewType(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getViewType() = Constant.NEWS
 
     constructor(parcel: Parcel) : this(
             parcel.readString(),
@@ -62,7 +61,7 @@ data class RedditNewsItem(
         parcel.writeString(author)
         parcel.writeString(title)
         parcel.writeInt(numComments)
-        parcel.writeLong(created)
+        parcel.writeLong(created_utc)
         parcel.writeString(thumbnail)
         parcel.writeString(url)
     }

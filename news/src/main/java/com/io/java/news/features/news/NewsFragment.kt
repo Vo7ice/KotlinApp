@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.io.java.news.R
 import com.io.java.news.base.BaseFragment
-import com.io.java.news.base.inflate
-import com.io.java.news.base.showNackbar
 import com.io.java.news.bean.RedditNews
+import com.io.java.news.common.extensions.inflate
+import com.io.java.news.common.extensions.showSnackbar
 import com.io.java.news.features.NewsManager
 import kotlinx.android.synthetic.main.fragment_news.*
 import rx.android.schedulers.AndroidSchedulers
@@ -69,7 +69,7 @@ class NewsFragment : BaseFragment() {
                     redditNews = retrievedNews
                     // set data
                 }, { error ->
-                    showNackbar(news_list, error.message ?: "")
+                    showSnackbar(news_list, error.message ?: "")
                 })
         subscriptions?.add(subscriber)
     }

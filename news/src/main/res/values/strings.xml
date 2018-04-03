@@ -1,4 +1,33 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">News</string>
     <string name="img_thumbnail">User Avatar</string>
+
+    <string name="txt_commenst"><xliff:g id = "num_comments">%1$d</xliff:g> Comments</string>
+
+    <string name="txt_time_recently">Recently</string>
+
+    <plurals name="txt_time_about_minute">
+        <item quantity="one"><xliff:g id = "time">%1$d</xliff:g> Minute Ago</item>
+        <item quantity="other"><xliff:g id = "time">%1$d</xliff:g> Minutes Ago</item>
+    </plurals>
+
+    <plurals name="txt_time_about_hour">
+        <item quantity="one"><xliff:g id = "time">%1$d</xliff:g> Hour Ago</item>
+        <item quantity="other"><xliff:g id = "time">%1$d</xliff:g> Hours Ago</item>
+    </plurals>
+
+    <plurals name="txt_time_about_day">
+        <item quantity="one"><xliff:g id = "time">%1$d</xliff:g> Day Ago</item>
+        <item quantity="other"><xliff:g id = "time">%1$d</xliff:g> Days Ago</item>
+    </plurals>
+
+    <plurals name="txt_time_about_month">
+        <item quantity="one"><xliff:g id = "time">%1$d</xliff:g> Month Ago</item>
+        <item quantity="other"><xliff:g id = "time">%1$d</xliff:g> Months Ago</item>
+    </plurals>
+
+    <plurals name="txt_time_about_year">
+        <item quantity="one"><xliff:g id = "time">%1$d</xliff:g> Year Ago</item>
+        <item quantity="other"><xliff:g id = "time">%1$d</xliff:g> Years Ago</item>
+    </plurals>
 </resources>
