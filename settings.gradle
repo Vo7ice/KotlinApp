@@ -1,1 +1,1 @@
-include ':xmlParser', ':news'
+include ':xmlParser', ':news', ':launhcerintegration'

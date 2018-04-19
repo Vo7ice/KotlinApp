@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KotlinApp.iml" filepath="$PROJECT_DIR$/KotlinApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/launhcerintegration/launhcerintegration.iml" filepath="$PROJECT_DIR$/launhcerintegration/launhcerintegration.iml" />
       <module fileurl="file://$PROJECT_DIR$/news/news.iml" filepath="$PROJECT_DIR$/news/news.iml" />
       <module fileurl="file://$PROJECT_DIR$/xmlParser/xmlParser.iml" filepath="$PROJECT_DIR$/xmlParser/xmlParser.iml" />
     </modules>
