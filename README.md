@@ -19,3 +19,4 @@
 ## Android
 - [博客评论时间显示算法](https://blog.csdn.net/liuyinghui523/article/details/51480858)
 - [Android中的string资源占位符及Plurals string](https://blog.csdn.net/Gaugamela/article/details/54694982)
+- [使用新依赖项配置](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html?utm_source=android-studio#new_configurations)
