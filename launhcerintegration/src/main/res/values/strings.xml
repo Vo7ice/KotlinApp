@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LaunhcerIntegration</string>
     <string name="google_folder_title">Google</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
