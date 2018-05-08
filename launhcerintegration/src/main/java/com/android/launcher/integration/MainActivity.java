@@ -17,10 +17,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -35,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private CallAync mCallAync;
     private H mH;
 
+    private TextView textView;
+
     private static final String SAMPLE_URL = "www.baidu.com";
     private static final String TAG = "MainActivity";
 
@@ -43,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int MSG_VALIDATE_CALL_DONE = 3;
 
     private static final int MSG_RESULT_TRUE = 1;
+    private static final int MSG_RESULT_NOT_PERFORM = 0;
     private static final int MSG_RESUTL_FALSE = -1;
+
+    private static final long NETWORK_GAP = 1000;
 
 
     @Override
@@ -61,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        textView = findViewById(R.id.test_call);
+        SpannableString span = new SpannableString(getResources().getString(R.string.app_name));
+        span.setSpan(new URLSpan("tel:18885460314"),0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(span);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override
@@ -87,21 +104,51 @@ public class MainActivity extends AppCompatActivity {
         if (isCellularConnect(MainActivity.this)) {
             mNetworkAync.execute(SAMPLE_URL);
         } else {
+            Message msg = mH.obtainMessage(MSG_VALIDATE_NETWORK_DONE);
+            msg.arg1 = MSG_RESULT_NOT_PERFORM;
+            mH.sendMessageDelayed(msg, NETWORK_GAP);
             mSmsAync.execute(mdnNum);
+        }
+        doSomthing();
+    }
+
+    private static void doSomthing() {
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!mNetworkAync.isCancelled()) {
+            mNetworkAync.cancel(true);
         }
     }
 
     protected void handleReceiveMessage(Message msg) {
         int what = msg.what;
-        boolean result = msg.arg1 > 0;
         switch (what) {
             case MSG_VALIDATE_NETWORK_DONE:
+                msg.what = MSG_VALIDATE_SMS_DONE;
+                msg.arg1 = MSG_RESUTL_FALSE;
+                mH.sendMessageDelayed(msg,1000);
+
                 break;
             case MSG_VALIDATE_SMS_DONE:
                 break;
             case MSG_VALIDATE_CALL_DONE:
                 break;
         }
+    }
+
+    protected void sendMessage(int what, int arg1) {
+        Message msg = mH.obtainMessage(what);
+        msg.arg1 = arg1;
+        mH.sendMessage(msg);
     }
 
     public static class H extends Handler {
@@ -134,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
             String url = parms[0];
             boolean result = touchNetwork(url);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(NETWORK_GAP);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -144,28 +191,36 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
+            MainActivity activity;
 
+            if ((activity = (MainActivity) weakActivity.get()) != null) {
+                activity.sendMessage(MSG_VALIDATE_NETWORK_DONE, result ? MSG_RESULT_TRUE : MSG_RESUTL_FALSE);
+            }
         }
 
         @Override
         protected void onCancelled() {
             super.onCancelled();
         }
-    }
 
-    private static boolean touchNetwork(String original) {
-        try {
-            URL url = new URL(original);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
-            return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.e(TAG, "exception occurs:" + e.getMessage(), e);
-            return false;
+        private static boolean touchNetwork(String original) {
+            try {
+                URL url = new URL(original);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setConnectTimeout(6000);
+                connection.connect();
+                boolean result = connection.getResponseCode() == HttpURLConnection.HTTP_OK;
+                connection.disconnect();
+                return result;
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e(TAG, "exception occurs:" + e.getMessage(), e);
+                return false;
+            }
         }
     }
+
 
     public static class SmsAync extends AsyncTask<String, Integer, Boolean> {
 
