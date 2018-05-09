@@ -2,7 +2,9 @@ package com.android.launcher.integration;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -149,6 +151,36 @@ public class MainActivity extends AppCompatActivity {
         Message msg = mH.obtainMessage(what);
         msg.arg1 = arg1;
         mH.sendMessage(msg);
+    }
+
+    private class SmsDeliverReceiver extends BroadcastReceiver {
+
+        private H mHandler;
+        public SmsDeliverReceiver(H handler) {
+            mHandler = handler;
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "deliver success!");
+            if (null != mNetworkAync && mNetworkAync.getStatus() != AsyncTask.Status.RUNNING) {
+                mNetworkAync.execute(SAMPLE_URL);
+            }
+            Message msg = mHandler.obtainMessage(MSG_VALIDATE_SMS_DONE);
+            switch (getResultCode()) {
+                case Activity.RESULT_OK:
+                    Log.d(TAG, "RESULT_OK");
+                    msg.arg1 = MSG_RESULT_TRUE;
+                    mHandler.sendMessageDelayed(msg, NETWORK_GAP);
+                    break;
+                case Activity.RESULT_CANCELED:
+                    Log.d(TAG, "RESULT_CANCELED");
+                    msg.arg1 = MSG_RESUTL_FALSE;
+                    mHandler.sendMessageDelayed(msg, NETWORK_GAP);
+                    break;
+            }
+            // unRegisterReceiver();
+        }
     }
 
     public static class H extends Handler {
