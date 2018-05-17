@@ -3,11 +3,15 @@ package com.android.launcher.integration;
 import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int MSG_RESUTL_FALSE = -1;
 
     private static final long NETWORK_GAP = 1000;
+
+    private static final String AUTHORITY = "com.android.launcher3.settings";
+    private static final String TABLE_NAME = "favorites";
+
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
 
 
     @Override
@@ -112,6 +121,30 @@ public class MainActivity extends AppCompatActivity {
             mSmsAync.execute(mdnNum);
         }
         doSomthing();
+
+        String selection = "itemType" + " = ? " + " AND " + " title = ?";
+        String[] selectionArgs = new String[] {"0", "Voicemail"};
+        ContentResolver resolver = getBaseContext().getContentResolver();
+        Cursor cursor = resolver.query(CONTENT_URI, null, selection, selectionArgs, "_id DESC");
+        if (null == cursor) {
+            Log.d("Vo7ice", "cursor is null");
+        } else {
+            Log.d("Vo7ice", "cursor size is " + cursor.getCount());
+        }
+        long id = 0L;
+        if (null != cursor && cursor.moveToFirst()) {
+             id = cursor.getLong(cursor.getColumnIndex("_id"));
+        }
+        if (id != 0L) {
+            String where = "_id = ?";
+            String[] ids = new String[] {String.valueOf(id)};
+            ContentValues values = new ContentValues();
+            values.put("cellX", 3);
+            values.put("cellY", 3);
+            int update = resolver.update(CONTENT_URI, values, where, ids);
+            int delete = resolver.delete(CONTENT_URI, where, ids);
+        }
+
     }
 
     private static void doSomthing() {
