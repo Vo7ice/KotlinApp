@@ -1,4 +1,8 @@
-package com.android.launcher.integration;
+package com.android.launcher.integration.data;
+
+/**
+ * @author huguojin
+ */
 
 public enum FunctionType {
 

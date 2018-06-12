@@ -30,6 +30,7 @@ public class FunctionActivity extends AppCompatActivity {
         int keycode_ptt = KeyEvent.keyCodeFromString("KEYCODE_PTT");
         int keycode_ptt_key = KeyEvent.keyCodeFromString("KEYCODE_PTT_KEY");
         Log.d("Vo7ice","keycode_ptt = " + keycode_ptt + "keycode_ptt_key = " + keycode_ptt_key);
+        String app_name = getResources().getString(R.string.app_name);
     }
 
 }
