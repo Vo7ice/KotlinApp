@@ -1,6 +1,9 @@
 package com.android.launcher.integration.data;
 
-public abstract class Dashboard {
+/**
+ * @author huguojin
+ */
+public class Dashboard {
 
     private String mTitle;
 

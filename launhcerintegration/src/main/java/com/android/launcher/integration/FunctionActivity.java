@@ -7,8 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * @author huguojin
+ */
 public class FunctionActivity extends AppCompatActivity {
 
     @Override
@@ -33,4 +37,12 @@ public class FunctionActivity extends AppCompatActivity {
         String app_name = getResources().getString(R.string.app_name);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
