@@ -34,6 +34,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.kodiak.intent.action.PTT_Button"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
