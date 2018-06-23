@@ -59,7 +59,8 @@
             android:layout_marginStart="10dp"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
-            android:autoLink="phone"/>
+            android:autoLink="phone"
+            />
     </LinearLayout>
 
 

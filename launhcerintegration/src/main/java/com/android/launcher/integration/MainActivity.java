@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         span.setSpan(new URLSpan("tel:18885460314"),0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(span);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 
     @Override
