@@ -43,6 +43,13 @@
                 <action android:name="com.kodiak.intent.action.PTT_Button"/>
             </intent-filter>
         </receiver>
+
+        <provider
+            android:name=".provider.ImportProvider"
+            android:authorities="com.android.launcher3.import"
+            android:enabled="true"
+            android:exported="true">
+        </provider>
     </application>
 
 </manifest>
