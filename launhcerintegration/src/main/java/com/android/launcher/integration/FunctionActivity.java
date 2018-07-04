@@ -2,12 +2,14 @@ package com.android.launcher.integration;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -48,6 +50,16 @@ public class FunctionActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter("com.kodiak.intent.action.PTT_Button");
         mReceiver = new MyReceiver();
         getBaseContext().registerReceiver(mReceiver,filter);
+        String ok = getResources().getString(com.android.internal.R.string.ok);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton(com.android.internal.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == AlertDialog.BUTTON_POSITIVE) {
+
+                }
+            }
+        });
     }
 
     @Override
