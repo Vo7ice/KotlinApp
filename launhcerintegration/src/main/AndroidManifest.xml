@@ -44,6 +44,15 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".OmaMobileIDReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.settings.START_MOBILEID"/>
+            </intent-filter>
+        </receiver>
+
         <provider
             android:name=".provider.ImportProvider"
             android:authorities="com.android.launcher3.import"
