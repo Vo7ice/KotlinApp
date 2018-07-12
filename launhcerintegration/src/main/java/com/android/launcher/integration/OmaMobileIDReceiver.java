@@ -33,12 +33,12 @@ public class OmaMobileIDReceiver extends BroadcastReceiver {
         Log.d(TAG, "onReceive: action = " + intent.getAction());
         boolean needStart = intent.getBooleanExtra(NEED_START, false);
         if (needStart) {
-            startMoblieId(context);
+            startMobileId(context);
             sendCustomerForceChangeBroadcast(context);
         }
     }
 
-    protected void startMoblieId(Context context) {
+    protected void startMobileId(Context context) {
         Intent i = new Intent(ACTION_MOBILE_ID_START);
         i.setClassName(MOBILE_ID_PKGNAME, MOBILE_ID_CLASSNAME);
         context.sendBroadcast(i, MOBILE_ID_PERMISSION);
