@@ -43,7 +43,6 @@
                 <action android:name="com.kodiak.intent.action.PTT_Button"/>
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".OmaMobileIDReceiver"
             android:enabled="true"
@@ -59,6 +58,15 @@
             android:enabled="true"
             android:exported="true">
         </provider>
+
+        <activity android:name=".NotificationActivity"
+                  android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
