@@ -22,6 +22,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * @author huguojin
  */
@@ -102,6 +106,14 @@ public class FunctionActivity extends AppCompatActivity {
             shortcutManager.requestPinShortcut(info, shortcutCallbackIntent.getIntentSender());
         }
 
+    }
+
+    public void onshortcutChanged(List<ShortcutInfo> infos) {
+        infos.forEach(shortcut -> {
+
+        });
+
+        Set<String> demo = new HashSet<>();
     }
 
     public class MyReceiver extends BroadcastReceiver {
