@@ -5,6 +5,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+/**
+ * @author huguojin
+ */
 public class NotificationActivity extends AppCompatActivity {
 
     private MyAsyncTask mMyAsyncTask;
