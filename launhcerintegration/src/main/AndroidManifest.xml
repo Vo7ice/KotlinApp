@@ -59,13 +59,28 @@
             android:exported="true">
         </provider>
 
-        <activity android:name=".NotificationActivity"
-                  android:launchMode="singleInstance">
+        <activity
+            android:name=".NotificationActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".webview.PrivacyActivity"
+            android:label="@string/title_activity_privacy"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".webview.WebViewActivity"
+                  android:label="@string/title_activity_web_view"
+                  android:theme="@style/share_activity_styles">
         </activity>
     </application>
 
