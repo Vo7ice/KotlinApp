@@ -18,5 +18,6 @@
         android:text="test"
         android:layout_weight="1"
         android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"/>
 </LinearLayout>

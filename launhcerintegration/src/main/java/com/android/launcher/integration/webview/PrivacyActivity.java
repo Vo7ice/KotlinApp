@@ -1,8 +1,10 @@
 package com.android.launcher.integration.webview;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -48,11 +50,20 @@ public class PrivacyActivity extends AppCompatActivity {
         ss.setSpan(span, str.length() - 4, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTextView.setText(ss);
         mTextView.setMovementMethod(LinkMovementMethod.getInstance());*/
-        String  str = "单击打开 <a href='http://www.baidu.com/'>百度首页</a>";
-        mTextView.setText(Html.fromHtml(str));
+        String str = "单击打开 <a href='http://www.baidu.com/'>百度首页</a>";
+        StringBuilder sb = new StringBuilder();
+        String string = getBaseContext().getResources().getString(R.string.app_name);
+        sb.append(string).append(str);
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            mTextView.setText(Html.fromHtml(str, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            mTextView.setText(Html.fromHtml(str));
+        }
         mTextView.setMovementMethod(LinkMovementMethod.getInstance());
 
 
+
+        ContextCompat.getDrawable(getBaseContext(), R.color.colorAccent);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
