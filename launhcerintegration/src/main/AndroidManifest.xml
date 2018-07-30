@@ -23,6 +23,11 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".FunctionActivity"
@@ -72,15 +77,18 @@
             android:name=".webview.PrivacyActivity"
             android:label="@string/title_activity_privacy"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
-        <activity android:name=".webview.WebViewActivity"
-                  android:label="@string/title_activity_web_view"
-                  android:theme="@style/share_activity_styles">
+        <activity
+            android:name=".webview.WebViewActivity"
+            android:label="@string/title_activity_web_view"
+            android:theme="@style/share_activity_styles">
+        </activity>
+        <activity
+            android:name=".TimerActivity"
+            android:label="@string/title_activity_timer"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
     </application>
 
