@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         mTerminateTask = new TerminateTask(mH);
         if (!mExecutorService.isShutdown()) {
             mExecutorService.scheduleAtFixedRate(mRpeatTask, 1, 150, TimeUnit.MICROSECONDS);
-            mExecutorService.scheduleAtFixedRate(mTerminateTask, 2000, 1, TimeUnit.MICROSECONDS);
+            mExecutorService.scheduleAtFixedRate(mTerminateTask, 2000, 1, TimeUnit.MINUTES);
         }
 
 
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Resources resources = getBaseContext().getResources();
-
+        boolean dataAvailable = isDataAvailable(getBaseContext());
 
     }
 
@@ -176,6 +176,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if (!mExecutorService.isTerminated() || !mExecutorService.isShutdown()) {
+            mExecutorService.shutdownNow();
+        }
     }
 
     @Override
@@ -183,9 +186,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         if (!mNetworkAync.isCancelled()) {
             mNetworkAync.cancel(true);
-        }
-        if (!mExecutorService.isTerminated() || !mExecutorService.isShutdown()) {
-            mExecutorService.shutdownNow();
         }
     }
 
