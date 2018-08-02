@@ -7,4 +7,5 @@
     <string name="title_activity_privacy">PrivacyActivity</string>
     <string name="title_activity_web_view">WebViewActivity</string>
     <string name="title_activity_timer">TimerActivity</string>
-</resources>
+    <string name="discription_text_to_speech">"Wi-Fi calling has detected that your device isconnected to a Wi-Fi access point located outside of the USA. Calls to emergency services(to 9-1-1, 999, 112, etc., depening on the county) are not made over the Wi-Fi network towhich you are connected. As such, depending on your device’s capabilities and current roamingsettings, you may be unable to make emergency services calls using Wi-Fi calling. Contactemergency services by some other means."</string>
+    </resources>

@@ -10,11 +10,21 @@
     tools:showIn="@layout/activity_timer">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
-        android:text="TextView"/>
+        android:layout_marginTop="50dp"
+        android:text="@string/discription_text_to_speech"
+        android:contentDescription="@string/discription_text_to_speech"/>
+
+    <Button
+        android:id="@+id/start_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:text="Start"/>
 </RelativeLayout>
