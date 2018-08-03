@@ -141,6 +141,10 @@ public class MainActivity extends AppCompatActivity {
         }
         doSomthing();
 
+        if (mH.hasMessages(MSG_NETWORK_AVAILABLE_NOW)) {
+            mH.removeMessages(MSG_NETWORK_AVAILABLE_NOW);
+            mH.sendMessageDelayed(mH.obtainMessage(MSG_NETWORK_AVAILABLE_NOW),10000);
+        }
         String selection = "itemType" + " = ? " + " AND " + " title = ?";
         String[] selectionArgs = new String[]{"0", "Voicemail"};
         ContentResolver resolver = getBaseContext().getContentResolver();
