@@ -37,6 +37,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Timer;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     Timer mTimer;
 
     private ScheduledExecutorService mExecutorService;
+    private Future mRepeatFuture;
+    private Future mTerminateFure;
+
     private RepeatTask mRpeatTask;
     private TerminateTask mTerminateTask;
 
@@ -112,9 +116,10 @@ public class MainActivity extends AppCompatActivity {
         mH = new H(MainActivity.this);
         mRpeatTask = new RepeatTask(mH, getBaseContext());
         mTerminateTask = new TerminateTask(mH);
-        if (!mExecutorService.isShutdown()) {
-            mExecutorService.scheduleAtFixedRate(mRpeatTask, 1, 150, TimeUnit.MICROSECONDS);
-            mExecutorService.scheduleAtFixedRate(mTerminateTask, 2000, 1, TimeUnit.MINUTES);
+        Log.d("Vo7ice", "onResume: mExecutorService.isShutdown() = " + mExecutorService.isTerminated());
+        if (!mExecutorService.isTerminated()) {
+            mRepeatFuture = mExecutorService.scheduleAtFixedRate(mRpeatTask, 1, 150, TimeUnit.MICROSECONDS);
+            mTerminateFure = mExecutorService.schedule(mTerminateTask, 2000, TimeUnit.MICROSECONDS);
         }
 
 
@@ -171,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
         Resources resources = getBaseContext().getResources();
         boolean dataAvailable = isDataAvailable(getBaseContext());
 
+
+
     }
 
     private static void doSomthing() {
@@ -210,9 +217,11 @@ public class MainActivity extends AppCompatActivity {
             case MSG_TERMINATE_ALL:
                 Log.d("Vo7ice", " !mExecutorService.isShutdown() = " + !mExecutorService.isShutdown());
                 Log.d("Vo7ice", "isTerminated = " + mExecutorService.isTerminated());
-                if (mExecutorService != null && !mExecutorService.isShutdown()) {
+                if (mExecutorService != null && !mExecutorService.isTerminated()) {
                     mExecutorService.shutdownNow();
                 }
+                mRepeatFuture.cancel(true);
+                mTerminateFure.cancel(true);
                 break;
             default:
                 break;
